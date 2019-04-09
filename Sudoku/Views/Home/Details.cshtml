@@ -1,0 +1,31 @@
+﻿@model Sudoku.View_Models.SudokuOutputView
+
+@{
+    ViewBag.Title = "Sudoku";
+}
+
+<h2>Sudoku</h2>
+<div>
+    <table id="Sudoku">
+        @{ int counter = 0;
+         for (int y = 0; y < 9; y++)
+         {
+            <tr>
+                @for (int x = 0; x < 9; x++)
+                {
+                    if (Model.Values[counter] == "0")
+                    {
+                        <td class="x-@x y-@y cell"><input type="text" maxlength="1" class="EmptyCell" /></td>
+                    }
+                    else
+                    {
+                        <td class="x-@x y-@y cell">@Model.Values[counter]</td>
+                    }
+                    counter++;
+                }
+            </tr>
+         }
+        }
+    </table>
+</div>
+@* Error about not passing an ID unless from the admin sudoku selection process *@

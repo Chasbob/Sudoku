@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Sudoku System</h1>
+<form action="/home/sudoku" method="get" enctype="multipart/form-data">
+    <label for="List" title="This will show a list">
+        Select Sudoku
+        <select id="List" name="ID">
+
+            @foreach (var item in Model.ListOfSudokus)
+            {
+                int OutputID = item.ID;
+                OutputID = OutputID;
+                <option value="@item.ID">@OutputID</option>
+                
+            }
+
+        </select>
+        <select id="Difficulty" name="Difficulty">
+            <option value="Easy" selected>Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+    </label>
+    <input type="submit" value="Display Sudoku" />
+
+</form>
+
+<form action="/home/Leaderboard" method="get" enctype="multipart/form-data">
+    <label for="List" title="This will show a list">
+        Select Sudoku
+        <select id="List" name="ID">
+
+            @foreach (var item in Model.ListOfSudokus)
+            {
+                int OutputID = item.ID;
+                OutputID = OutputID;
+                <option value="@item.ID">@OutputID</option>
+
+            }
+
+        </select>
+    </label>
+    <input type="submit" value="Display Sudoku Leaderboard" />
+
+</form>

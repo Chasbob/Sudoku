@@ -1,0 +1,28 @@
+﻿@model Sudoku.View_Models.SudokuLeaderboard
+
+
+@* 
+
+Takes a SudokuLeaderboard and displays it in a html table with each time being displayed in a table row
+
+*@
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<h2>Leaderboard</h2>
+<table class="table table-striped">
+    <thead><tr><th>User</th><th>Time Taken</th></tr></thead>
+    <tbody>
+        @{
+            foreach (var item in Model.ListOfEntries.OrderBy(e=>e.TimeTaken))
+            {
+                <tr>
+                    <td>@item.UserName</td>
+
+                    <td>@item.TimeTaken</td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>

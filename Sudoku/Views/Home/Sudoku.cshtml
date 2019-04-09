@@ -1,0 +1,41 @@
+﻿@model Sudoku.View_Models.SudokuOutputView
+
+@{
+    ViewBag.Title = "Sudoku";
+}
+@* 
+
+This takes the value of a sudoku in array form and displays them in a html table 
+    with zeros replaced with text inputs
+    also a submit button that allows the user to check their solution
+*@
+<h2>Sudoku</h2>
+<div>
+    <form action="SubmitSudoku" method="post">
+        <table id="Sudoku">
+            @{ int counter = 0;
+            for (int y = 0; y < 9; y++)
+            {
+            <tr>
+                @for (int x = 0; x < 9; x++)
+                {
+                if (Model.Values[counter] == "0")
+                {
+                <td class="x-@x y-@y cell"><input class="cell EmptyCell" name="ID[@counter]" type="text" maxlength="1" /></td>
+                }
+                else
+                {
+                <td class="x-@x y-@y cell"><input class="cell" name="ID[@counter]" type="text" maxlength="1" value="@Model.Values[counter]" readonly /></td>
+
+                }
+                counter++;
+                }
+            </tr>
+            }
+            }
+        </table>
+        <br />
+        <input type="hidden" name="SudokuID" value="@Model.SudokuID" />
+        <input class="btn btn-success" type="submit" value="Submit" />
+    </form>
+</div>

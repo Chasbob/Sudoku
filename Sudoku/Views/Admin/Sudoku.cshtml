@@ -1,0 +1,40 @@
+﻿@model Sudoku.View_Models.SudokuOutputView
+
+@{
+    ViewBag.Title = "Sudoku";
+}
+
+@* 
+The Admin is redirected here after creating a new sudoku
+    The full solution is displayed here
+*@
+
+<h2>Sudoku</h2>
+<div>
+    @*<form action="/home/SubmitSudoku" method="post">*@
+        <table id="Sudoku">
+            @{ int counter = 0;
+            for (int y = 0; y < 9; y++)
+            {
+                    <tr>
+                        @for (int x = 0; x < 9; x++)
+                        {
+                            if (Model.Values[counter] == "0")
+                            {
+                                <td class="x-@x y-@y cell"><input class="cell EmptyCell" name="ID[@counter]" type="text" maxlength="1" /></td>
+                            }
+                            else
+                            {
+                                <td class="x-@x y-@y cell"><input class="cell" name="ID[@counter]" type="text" maxlength="1" value="@Model.Values[counter]" readonly /></td>
+
+                            }
+                            counter++;
+                        }
+                    </tr>
+                }
+            }
+        </table>
+        <br />
+        @*<input class="btn btn-success" type="submit" value="Submit" />*@
+    @*</form>*@
+</div>
